@@ -41,11 +41,16 @@ jobs:
       - name: Install conda dependencies
         run: |
           mamba env update -f $CONDA_ENV_FILE
+          
+      - name: Version info
+        run: |
+          conda info -a
+          conda list
 
       # Build the book
       - name: Build the book
         run: |
-          jupyter-book build cordex-tutorials
+          jb build cordex-tutorials
 
       # Deploy the book's HTML to gh-pages branch
       - name: GitHub Pages action
