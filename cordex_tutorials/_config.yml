@@ -34,4 +34,9 @@ repository:
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
   use_issues_button: true
+  
+binder:
+  binderhub_url               : "https://mybinder.org"
+  text                        : "Launch binder"
   use_repository_button: true
+  notebook_interface: "jupyterlab"  # or "classic"
