@@ -13,12 +13,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python 3.8
+    - name: Set up Python 3.9
       uses: s-weigand/setup-conda@v1
       with:
         update-conda: true
         conda-channels: conda-forge
-        python-version: 3.8
+        python-version: 3.9
 
     - name: Install dependencies
       run: |
@@ -26,7 +26,7 @@ jobs:
         conda env create -f environment.yml
     - name: Build book
       run: |
-        source activate jupyter-earth
+        source activate cordex-tutorials
         jupyter-book build ./cordex-tutorials
 
     # Deploy the book's HTML to gh-pages branch
