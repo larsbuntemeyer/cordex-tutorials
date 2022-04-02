@@ -3,7 +3,7 @@
 ## Reproducible Data Analysis
 
 
-```{figure} ../figures/research-cycle.jpg
+```{figure} ./figures/research-cycle.jpg
 ---
 name: research-cycle
 alt: The research process is represented as a perpetual cycle of generating research ideas, performing data planning and design, data collection, and data processing and analysis, publishing, preserving and hence, allowing re-use of data. 
