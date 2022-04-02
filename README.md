@@ -1,6 +1,6 @@
 # Cordex Tutorials
 
-Cordex Tutorials with Python
+Cordex Tutorials with Python.
 
 ## Usage
 
