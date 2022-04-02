@@ -4,6 +4,7 @@
 format: jb-book
 root: intro
 chapters:
+- file: reproducible-research
+- file: domains
 - file: markdown
 - file: notebooks
-- file: domains
