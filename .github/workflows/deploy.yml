@@ -9,26 +9,29 @@ on:
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
   build-and-deploy-book:
-    runs-on: ubuntu-latest
-
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.8]
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python 3.9
-      uses: s-weigand/setup-conda@v1
-      with:
-        update-conda: true
-        conda-channels: conda-forge
-        python-version: 3.9
 
-    - name: Install dependencies
-      run: |
-        python --version
-        conda env create -f environment.yml
-    - name: Build book
-      run: |
-        source activate cordex-tutorials
-        jupyter-book build ./cordex-tutorials
+    - name: Setup Miniconda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          auto-update-conda: true
+          auto-activate-base: false
+          miniconda-version: 'latest'
+          python-version: 3.8
+          environment-file: environment.yml
+          activate-environment: cordex-tutorials
 
+    # Build the book
+    - name: Build the book
+      shell: bash -l {0}
+      run: |
+        jupyter-book build cordex-tutorials
     # Deploy the book's HTML to gh-pages branch
     - name: GitHub Pages action
       uses: peaceiris/actions-gh-pages@v3.6.1
